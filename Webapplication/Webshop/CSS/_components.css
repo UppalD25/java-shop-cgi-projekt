@@ -1,0 +1,16 @@
+/* Beispiel für eine Produkt-Karte */
+.product-card {
+    border: 1px solid #ccc;
+    padding: var(--spacing-md);
+    text-align: center;
+}
+
+/* Beispiel für den Warenkorb-Button */
+.nav-cart {
+    /* BEM-Naming: Block__Element--Modifier */
+    background-color: var(--color-primary);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+}

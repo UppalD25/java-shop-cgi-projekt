@@ -1,0 +1,106 @@
+:root {
+    /* Farben (einfach änderbar) */
+    --color-primary: #007bff;
+    --color-secondary: #6c757d;
+    --color-text: #212529;
+
+    /* Schriftarten */
+    --font-main: 'Arial', sans-serif;
+
+    /* Abstände */
+    --spacing-md: 20px;
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--color-text);
+    margin: 0;
+    padding: 0;
+}
+/* ... allgemeine Typografie-Stile ... */
+
+/* --- Formular-Komponenten --- */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block; /* Label über dem Feld */
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Wichtig, damit Padding die Breite nicht sprengt */
+    font-size: 1em;
+}
+
+.form-group input:focus {
+    border-color: var(--color-primary);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+
+.form-options {
+    display: flex;
+    justify-content: flex-end; /* Link rechtsbündig */
+    margin-bottom: 25px;
+}
+
+.forgot-password-link {
+    font-size: 0.9em;
+    color: var(--color-secondary);
+    text-decoration: none;
+}
+
+/* Button-Stile (können auch für andere Buttons verwendet werden) */
+.btn {
+    display: block; /* Volle Breite */
+    width: 100%;
+    padding: 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: background-color 0.3s;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Dunklere Farbe beim Hover */
+}
+
+.btn-secondary {
+    background-color: #f8f9fa;
+    color: var(--color-text);
+    border-color: #ccc;
+    margin-top: 10px;
+}
+
+.btn-secondary:hover {
+    background-color: #e9ecef;
+}
+
+/* Registrierungsbereich */
+.register-link-area {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    text-align: center;
+}
+
+.register-link-area p {
+    margin-bottom: 10px;
+}

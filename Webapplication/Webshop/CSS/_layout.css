@@ -1,0 +1,28 @@
+/* Zentrieren der Login-Box auf der Seite */
+.login-page {
+    display: flex;
+    justify-content: center; /* Horizontal zentrieren */
+    align-items: center; /* Vertikal zentrieren */
+    min-height: 100vh; /* Mindestens die Höhe des Viewports */
+    background-color: #f4f4f4; /* Leichter Hintergrund */
+    padding: var(--spacing-md);
+}
+
+.login-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px; /* Begrenzte Breite für Fokus */
+}
+
+.login-header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.login-header h1 {
+    font-size: 1.8em;
+    margin-bottom: 5px;
+}
