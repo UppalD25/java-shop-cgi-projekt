@@ -26,3 +26,75 @@
     font-size: 1.8em;
     margin-bottom: 5px;
 }
+/* --- Datei: css/_layout.css --- */
+
+/* --- Header Styling --- */
+.site-header {
+    background-color: var(--color-card-bg);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--spacing-md) 0;
+    /* Flexbox für Anordnung: Logo links, Navigation Mitte, Aktionen rechts */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-header .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--color-text);
+    margin-right: var(--spacing-lg);
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.main-nav li {
+    margin: 0 var(--spacing-md);
+}
+
+.main-nav a {
+    color: var(--color-text);
+    font-weight: 500;
+}
+
+.user-actions a {
+    margin-left: var(--spacing-md);
+}
+
+/* --- Hauptinhalt (Main Content) --- */
+.content {
+    padding: var(--spacing-lg) 0;
+}
+
+/* --- Footer Styling --- */
+.site-footer {
+    background-color: var(--color-text); /* Dunkler Hintergrund */
+    color: #ffffff;
+    padding: var(--spacing-lg) 0;
+}
+
+.footer-columns {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+}
+
+.site-footer a {
+    color: #cccccc;
+    display: block; /* Links untereinander */
+    margin-bottom: var(--spacing-sm);
+}
+
+.copyright {
+    text-align: center;
+    border-top: 1px solid #333;
+    padding-top: var(--spacing-md);
+    margin: 0;
+    font-size: 0.9em;
+}

@@ -1,23 +1,52 @@
+/* --- Datei: css/_base.css --- */
 :root {
-    /* Farben (einfach änderbar) */
+    /* Farben */
     --color-primary: #007bff;
     --color-secondary: #6c757d;
     --color-text: #212529;
+    --color-background: #f8f9fa; /* Heller Hintergrund für die Seite */
+    --color-card-bg: #ffffff; /* Weißer Hintergrund für Karten */
+    --color-border: #e9ecef;
 
     /* Schriftarten */
     --font-main: 'Arial', sans-serif;
 
     /* Abstände */
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
     --spacing-md: 20px;
+    --spacing-lg: 40px;
 }
 
 body {
     font-family: var(--font-main);
     color: var(--color-text);
+    background-color: var(--color-background);
     margin: 0;
     padding: 0;
+    line-height: 1.6;
 }
-/* ... allgemeine Typografie-Stile ... */
+
+/* Globaler Container für den Inhalt */
+.container {
+    max-width: 1200px; /* Max. Breite für große Shops */
+    margin: 0 auto; /* Zentrierung */
+    padding: 0 var(--spacing-md);
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h1, h2, h3 {
+    line-height: 1.2;
+    margin-top: 0;
+}
 
 /* --- Formular-Komponenten --- */
 .form-group {
