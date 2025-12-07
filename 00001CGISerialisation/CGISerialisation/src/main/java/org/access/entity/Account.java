@@ -7,37 +7,37 @@ import java.util.List;
 
 public class Account {
     private int account_id;
-    private String vorname;
-    private String nachname;
+    private String surname;
+    private String lastname;
     private String email;
-    private String passwort;
-    private String telefonnummer;
-    private List<Addresse> addresse;
-    private List<Warenkorb> warenkorb;
-    private List<Kreditkarte> kreditkarte;
+    private String password;
+    private String phoneNumber;
+    private List<Address> address;
+    private List<Warenkorb> shoppingCart;
+    private List<Kreditkarte> creditCard;
 
-    public List<Addresse> getAddresse() {
-        return addresse;
+    public List<Address> getAddress() {
+        return address;
     }
 
-    public void setAddresse(List<Addresse> addresse) {
-        this.addresse = addresse;
+    public void setAddress(List<Address> address) {
+        this.address = address;
     }
 
-    public List<Warenkorb> getWarenkorb() {
-        return warenkorb;
+    public List<Warenkorb> getShoppingCart() {
+        return shoppingCart;
     }
 
-    public void setWarenkorb(List<Warenkorb> warenkorb) {
-        this.warenkorb = warenkorb;
+    public void setShoppingCart(List<Warenkorb> shoppingCart) {
+        this.shoppingCart = shoppingCart;
     }
 
-    public List<Kreditkarte> getKreditkarte() {
-        return kreditkarte;
+    public List<Kreditkarte> getCreditCard() {
+        return creditCard;
     }
 
-    public void setKreditkarte(List<Kreditkarte> kreditkarte) {
-        this.kreditkarte = kreditkarte;
+    public void setCreditCard(List<Kreditkarte> creditCard) {
+        this.creditCard = creditCard;
     }
 
     public int getAccount_id() {
@@ -56,35 +56,35 @@ public class Account {
         this.email = email;
     }
 
-    public String getNachname() {
-        return nachname;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setNachname(String nachname) {
-        this.nachname = nachname;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
-    public String getPasswort() {
-        return passwort;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPasswort(String passwort) {
-        this.passwort = passwort;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getVorname() {
-        return vorname;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setVorname(String vorname) {
-        this.vorname = vorname;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
-    public String getTelefonnummer() {
-        return telefonnummer;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setTelefonnummer(String telefonnummer) {
-        this.telefonnummer = telefonnummer;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }
