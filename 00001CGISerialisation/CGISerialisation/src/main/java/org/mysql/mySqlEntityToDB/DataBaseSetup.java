@@ -7,7 +7,7 @@ public class DataBaseSetup {
     private Scanner Scanner = new Scanner(System.in);
 
     public void createAllTables() {
-        System.out.println("Bitte geben Sie den MY-SQL-Key (2FA-Key) ein:");
+        System.out.print("Bitte geben Sie den MY-SQL-Key (2FA-Key) ein:");
 
         String key = Scanner.nextLine();
         createCreditcardTable(key);
