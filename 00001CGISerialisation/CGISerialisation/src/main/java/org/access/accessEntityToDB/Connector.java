@@ -1,23 +1,22 @@
-package org.access.entityToDB;
+package org.access.accessEntityToDB;
+import org.externalData.ConfigLoader;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Connector {
-    private static final String ACCESS_DB_NAME = "Onlineshop.accdb";
-
-    private static final String databaseURL = "jdbc:ucanaccess://data/" + ACCESS_DB_NAME;
+    private static final String databaseURL = ConfigLoader.getProperty("access.url");
 
 
 
-    protected static Connection getConnectionToAccess(){
+    protected static Connection getConnectionToAccess()throws SQLException{
         try {
             return DriverManager.getConnection(databaseURL);
         } catch (SQLException e) {
             System.err.println( "Fehler beim Verbinden mit der Datenbank ");
-            e.printStackTrace();
+            throw e;
         }
-        return null;
     }
 
     //Vielleicht für später in bevor man versucht irgendwas zu machen diese methode austesten

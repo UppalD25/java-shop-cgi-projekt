@@ -1,10 +1,10 @@
-package org.access.entityToDB;
+package org.access.accessEntityToDB;
 
 import java.sql.*;
 
 public class AddKey {
 
-    public static void  addAllConstraints() {
+    public static void addAllConstraints() {
         addConstraintAddressAccount();
         addConstraintCreditcardAccount();
         addConstraintReviewProduct();
@@ -211,11 +211,5 @@ public class AddKey {
             System.err.println(" Fehler bei FK_CartProduct_Product");
             e.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) {
-        AddKey addKey = new AddKey();
-        addKey.addAllConstraints();
-        System.out.println("\n Constraint-Setup abgeschlossen!");
     }
 }

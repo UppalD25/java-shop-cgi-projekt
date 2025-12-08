@@ -1,8 +1,5 @@
 package org.access.entity;
 
-import org.mysql.entity.Kreditkarte;
-import org.mysql.entity.Warenkorb;
-
 import java.util.List;
 
 public class Account {
@@ -13,8 +10,8 @@ public class Account {
     private String password;
     private String phoneNumber;
     private List<Address> address;
-    private List<Warenkorb> shoppingCart;
-    private List<Kreditkarte> creditCard;
+    private List<ShoppingCart> shoppingCart;
+    private List<Creditcard> creditCard;
 
     public List<Address> getAddress() {
         return address;
@@ -24,19 +21,19 @@ public class Account {
         this.address = address;
     }
 
-    public List<Warenkorb> getShoppingCart() {
+    public List<ShoppingCart> getShoppingCart() {
         return shoppingCart;
     }
 
-    public void setShoppingCart(List<Warenkorb> shoppingCart) {
+    public void setShoppingCart(List<ShoppingCart> shoppingCart) {
         this.shoppingCart = shoppingCart;
     }
 
-    public List<Kreditkarte> getCreditCard() {
+    public List<Creditcard> getCreditCard() {
         return creditCard;
     }
 
-    public void setCreditCard(List<Kreditkarte> creditCard) {
+    public void setCreditCard(List<Creditcard> creditCard) {
         this.creditCard = creditCard;
     }
 

@@ -1,4 +1,4 @@
-package org.access.entityToDB;
+package org.access.accessEntityToDB;
 
 import java.sql.*;
 
@@ -36,7 +36,7 @@ public class DataBaseSetup {
                         "(Account_ID AUTOINCREMENT PRIMARY KEY, " +
                         "Surname VARCHAR(255), " +
                         "Lastname VARCHAR(255), " +
-                        "Email VARCHAR(255), " +
+                        "Email VARCHAR(255) UNIQUE, " +
                         "Password VARCHAR(255), " +
                         "PhoneNumber VARCHAR(255))");
                 System.out.println("Tabelle Account erfolgreich erstellt");
@@ -175,11 +175,11 @@ public class DataBaseSetup {
                 return;
             }
             stmt.execute("CREATE TABLE CartProduct " +
-                    "(Quantity INTEGER, " +
+                    "(CartProduct_ID AUTOINCREMENT PRIMARY KEY, " +
+                    "Quantity INTEGER, " +
                     "Price NUMERIC(10,2), " +
                     "ShoppingCart_ShoppingCart_ID INTEGER, " +
-                    "Product_Product_ID INTEGER, " +
-                    "PRIMARY KEY (ShoppingCart_ShoppingCart_ID, Product_Product_ID))");
+                    "Product_Product_ID INTEGER)");
             System.out.println("Tabelle CartProduct erfolgreich erstellt");
         }catch (SQLException e){
             System.err.println("Fehler beim Erstellen der Tabelle CartProduct");

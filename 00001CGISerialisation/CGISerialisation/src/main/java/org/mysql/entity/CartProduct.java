@@ -1,4 +1,4 @@
-package org.access.entity;
+package org.mysql.entity;
 
 public class CartProduct {
     private int cartProduct_id;

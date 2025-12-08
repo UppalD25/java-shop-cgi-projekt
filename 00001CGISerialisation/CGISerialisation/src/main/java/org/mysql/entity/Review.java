@@ -1,4 +1,4 @@
-package org.access.entity;
+package org.mysql.entity;
 
 import java.time.LocalDateTime;
 
