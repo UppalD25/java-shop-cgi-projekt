@@ -14,40 +14,7 @@
     border-radius: 4px;
     text-decoration: none;
 }
-/* --- Datei: css/_components.css --- */
 
-/* --- Buttons (Wiederverwendbare Stile) --- */
-
-.btn {
-    padding: 10px 20px;
-    border-radius: 4px;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    border: 1px solid transparent;
-    transition: background-color 0.3s, border-color 0.3s;
-    display: inline-block; /* Für Produktkarten ist inline-block besser */
-}
-
-.btn-primary {
-    background-color: var(--color-primary);
-    color: white;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-}
-
-.btn-secondary {
-    background-color: #f8f9fa;
-    color: var(--color-text);
-    border-color: #ccc;
-}
-
-.btn-secondary:hover {
-    background-color: #e9ecef;
-}
 
 /* --- Produkt-Karten-Komponente --- */
 
@@ -89,4 +56,86 @@
     font-weight: bold;
     margin-bottom: var(--spacing-md);
     display: block;
+}
+/* --- Datei: css/_components.css (Ergänzung) --- */
+
+/* --- Warenkorb-Artikelliste --- */
+
+.cart-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.cart-item {
+    display: flex;
+    align-items: flex-start;
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: var(--spacing-md);
+}
+
+.item-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-right: var(--spacing-md);
+    border-radius: 4px;
+}
+
+.item-details {
+    flex-grow: 1; /* Nimmt den restlichen Platz ein */
+}
+
+.item-details a {
+    font-weight: bold;
+    display: block;
+    margin-bottom: var(--spacing-sm);
+}
+
+.item-quantity {
+    width: 50px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    text-align: center;
+    margin-right: var(--spacing-sm);
+}
+
+.btn-remove {
+    background: none;
+    border: none;
+    color: #dc3545; /* Rot für Entfernen */
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+/* --- Warenkorb-Zusammenfassung --- */
+
+.cart-summary {
+    background-color: var(--color-card-bg);
+    padding: var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    position: sticky; /* Bleibt beim Scrollen sichtbar */
+    top: var(--spacing-md); /* Kleiner Abstand vom oberen Rand */
+}
+
+.summary-line, .summary-total {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px dashed var(--color-border);
+}
+
+.summary-total {
+    border-bottom: none;
+    font-size: 1.2em;
+    padding-top: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.btn-checkout, .btn-continue-shopping {
+    margin-top: var(--spacing-sm);
+    display: block; /* Volle Breite im Zusammenfassungs-Block */
 }

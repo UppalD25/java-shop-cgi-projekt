@@ -115,7 +115,7 @@ h1, h2, h3 {
     background-color: #f8f9fa;
     color: var(--color-text);
     border-color: #ccc;
-    margin-top: 10px;
+    width: 100%;
 }
 
 .btn-secondary:hover {
@@ -127,7 +127,6 @@ h1, h2, h3 {
     margin-top: 30px;
     padding-top: 20px;
     border-top: 1px solid #eee;
-    text-align: center;
 }
 
 .register-link-area p {
