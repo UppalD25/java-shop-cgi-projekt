@@ -1,13 +1,22 @@
 package org.test;
 
-import org.mysql.mySqlEntityToDB.DataBaseSetup;
+import org.databases.mysql.setup.Addon;
+import org.databases.mysql.setup.DataBaseSetup;
 
 public class test {
     public static void main(String[] args) {
-        org.mysql.mySqlEntityToDB.DataBaseSetup mysql = new DataBaseSetup();
-        org.access.accessEntityToDB.DataBaseSetup  access = new org.access.accessEntityToDB.DataBaseSetup();
+        DataBaseSetup mysql = new DataBaseSetup();
+        org.databases.access.setup.DataBaseSetup access = new org.databases.access.setup.DataBaseSetup();
+        Addon addon = new Addon();
+       /*
+       mysql.createAllTables();
+       access.createAllTables();
+       addon.runAddon();
+       */
 
-        mysql.createAllTables();
-        access.createAllTables();
+
+
+
+
     }
 }
