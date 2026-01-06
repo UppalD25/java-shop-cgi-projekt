@@ -98,3 +98,20 @@
     margin: 0;
     font-size: 0.9em;
 }
+/* --- Datei: css/_layout.css (Ergänzung) --- */
+
+.cart-layout {
+    display: grid;
+    /* 70% für die Artikel (links), 30% für die Zusammenfassung (rechts) */
+    grid-template-columns: 2fr 1fr;
+    gap: var(--spacing-lg);
+    align-items: flex-start; /* Verhindert, dass die rechte Spalte unnötig hoch wird */
+}
+
+/* Anpassung für kleinere Bildschirme (Mobile First) */
+@media (max-width: 900px) {
+    .cart-layout {
+        /* Stapelt die Spalten untereinander auf kleineren Geräten */
+        grid-template-columns: 1fr;
+    }
+}
