@@ -1,0 +1,117 @@
+/* Zentrieren der Login-Box auf der Seite */
+.login-page {
+    display: flex;
+    justify-content: center; /* Horizontal zentrieren */
+    align-items: center; /* Vertikal zentrieren */
+    min-height: 100vh; /* Mindestens die Höhe des Viewports */
+    background-color: #f4f4f4; /* Leichter Hintergrund */
+    padding: var(--spacing-md);
+}
+
+.login-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px; /* Begrenzte Breite für Fokus */
+}
+
+.login-header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.login-header h1 {
+    font-size: 1.8em;
+    margin-bottom: 5px;
+}
+/* --- Datei: css/_layout.css --- */
+
+/* --- Header Styling --- */
+.site-header {
+    background-color: var(--color-card-bg);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--spacing-md) 0;
+    /* Flexbox für Anordnung: Logo links, Navigation Mitte, Aktionen rechts */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-header .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--color-text);
+    margin-right: var(--spacing-lg);
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.main-nav li {
+    margin: 0 var(--spacing-md);
+}
+
+.main-nav a {
+    color: var(--color-text);
+    font-weight: 500;
+}
+
+.user-actions a {
+    margin-left: var(--spacing-md);
+}
+
+/* --- Hauptinhalt (Main Content) --- */
+.content {
+    padding: var(--spacing-lg) 0;
+}
+
+/* --- Footer Styling --- */
+.site-footer {
+    background-color: var(--color-text); /* Dunkler Hintergrund */
+    color: #ffffff;
+    padding: var(--spacing-lg) 0;
+}
+
+.footer-columns {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+}
+
+.site-footer a {
+    color: #cccccc;
+    display: block; /* Links untereinander */
+    margin-bottom: var(--spacing-sm);
+}
+
+.copyright {
+    text-align: center;
+    border-top: 1px solid #333;
+    padding-top: var(--spacing-md);
+    margin: 0;
+    font-size: 0.9em;
+}
+/* --- Datei: css/_layout.css (Ergänzung) --- */
+
+.cart-layout {
+    display: grid;
+    /* 70% für die Artikel (links), 30% für die Zusammenfassung (rechts) */
+    grid-template-columns: 2fr 1fr;
+    gap: var(--spacing-lg);
+    align-items: flex-start; /* Verhindert, dass die rechte Spalte unnötig hoch wird */
+}
+
+/* Anpassung für kleinere Bildschirme (Mobile First) */
+@media (max-width: 900px) {
+    .cart-layout {
+        /* Stapelt die Spalten untereinander auf kleineren Geräten */
+        grid-template-columns: 1fr;
+    }
+}
