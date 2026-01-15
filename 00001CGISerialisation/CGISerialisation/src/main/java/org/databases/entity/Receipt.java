@@ -7,15 +7,7 @@ public class Receipt {
     private Account account;
     private LocalDateTime receiptDate;
     private ShoppingCart shoppingCart;
-    private boolean isActive;
 
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public void setActive(boolean active) {
-        isActive = active;
-    }
 
     public ShoppingCart getShoppingCart() {
         return shoppingCart;

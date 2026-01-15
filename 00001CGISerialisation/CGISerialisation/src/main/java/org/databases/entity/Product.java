@@ -8,15 +8,7 @@ public class Product {
     private double price;
     private String descriptionText;
     private ArrayList<Review> review;
-    private boolean isActive;
 
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public void setActive(boolean active) {
-        isActive = active;
-    }
 
     public String getDescriptionText() {
         return descriptionText;

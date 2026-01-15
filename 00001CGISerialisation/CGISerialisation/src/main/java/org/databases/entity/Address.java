@@ -7,15 +7,7 @@ public class Address {
     private String street;
     private String doorNumber;
     private Account account;
-    private boolean isActive;
 
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public void setActive(boolean active) {
-        isActive = active;
-    }
 
     public int getAddress_id() {
         return address_id;

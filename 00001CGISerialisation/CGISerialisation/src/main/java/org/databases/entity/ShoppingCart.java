@@ -5,15 +5,6 @@ public class ShoppingCart {
     private int taxRate;
     private double deliveryFee;
     private Account account;
-    private boolean isActive;
-
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public void setActive(boolean active) {
-        isActive = active;
-    }
 
     public Account getAccount() {
         return account;

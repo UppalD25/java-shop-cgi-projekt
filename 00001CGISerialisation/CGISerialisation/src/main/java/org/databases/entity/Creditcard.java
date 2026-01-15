@@ -8,15 +8,7 @@ public class Creditcard {
     private LocalDate validUntil;
     private String cardnumber;
     private Account account;
-    private boolean isActive;
 
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public void setActive(boolean active) {
-        isActive = active;
-    }
     public Account getAccount() {
         return account;
     }

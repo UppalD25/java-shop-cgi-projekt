@@ -6,15 +6,7 @@ public class CartProduct {
     private Product product;
     private int quantity;
     private double price;
-    private boolean isActive;
 
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public void setActive(boolean active) {
-        isActive = active;
-    }
 
     public int getCartProduct_id() {
         return cartProduct_id;

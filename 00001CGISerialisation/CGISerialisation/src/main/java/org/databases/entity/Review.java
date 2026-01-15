@@ -8,15 +8,7 @@ public class Review {
     private Product product;
     private String comment;
     private LocalDateTime reviewDate;
-    private boolean isActive;
 
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public void setActive(boolean active) {
-        isActive = active;
-    }
 
 
     public Product getProduct() {
