@@ -1,4 +1,4 @@
 package org.services.baseService;
 
-public class AddressService {
+public class OrderService {
 }

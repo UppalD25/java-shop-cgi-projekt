@@ -1,80 +1,128 @@
 package org.cgi;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
+import org.services.*;
+import org.services.baseService.*;
 
-//CGI Common Gateway Interface
 
+/**
+ * CGI Main Entry Point - Service Dispatcher
+ * Routet Requests basierend auf PATH_INFO zu den entsprechenden Services
+ */
 public class Main {
 
     public static void main(String[] args) {
-        CgiParameter params = new CgiParameter();
-        ObjectMapper mapper = new ObjectMapper();
-        Eintrag eintrag = new Eintrag();
-
-        System.out.println("Content-Type: text/html; charset=UTF-8");
-        System.out.println();
-        System.out.println("<meta charset=\"UTF-8\">");
-        System.out.println("<h1>Hello World<h1>");
-
         try {
-            // Metadaten setzen
-            eintrag.setQryString(params.getQryString());
-            eintrag.setRemoteAddr(params.getRemoteAddr());
-            eintrag.setUserAgent(params.getUserAgent());
-            eintrag.setReferer(params.getReferer());
-            eintrag.setPathInfo(params.getPathInfo());
-            eintrag.setTitel("Mein erster Eintrag");
-            eintrag.setInhalt("keine Daten erhalten");
+            CgiParameter params = new CgiParameter();
+            String path = params.getPathInfo();
 
-            // POST + JSON
-            if ("POST".equals(params.getRequestMethod()) &&
-                    params.getContentType() != null &&
-                    params.getContentType().startsWith("application/json")) {
-                String jsonData = params.getContentFromBodyAsString();
-                Data data = mapper.readValue(jsonData, Data.class);
-                eintrag.setData(data);
-                eintrag.setInhalt(jsonData);
+            // Service aus Path extrahieren
+            String service = extractServiceFromPath(path);
+
+            // Service-Instanz erstellen
+            BaseService serviceInstance = null;
+
+            switch(service) {
+                /*case "account":
+                case "login":
+                case "register":
+                case "profile":
+                    serviceInstance = new AccountService(params);
+                    break;
+
+                case "product":
+                case "products":
+                    serviceInstance = new ProductService(params);
+                    break;
+
+                case "cart":
+                case "shopping-cart":
+                    serviceInstance = new ShoppingCartService(params);
+                    break;
+
+                case "review":
+                case "reviews":
+                    serviceInstance = new ReviewService(params);
+                    break;
+
+                case "order":
+                case "orders":
+                case "checkout":
+                    serviceInstance = new OrderService(params);
+                    break;
+
+
+                 */
+                case "test":
+                    serviceInstance = new TestService(params);
+                    break;
+
+                default:
+                    sendError404(service);
+                    return;
             }
 
-            // Liste laden oder neu erstellen
-            File file = new File("eintraege.json");
-            List<Eintrag> liste;
-            if (file.exists()) {
-                liste = mapper.readValue(file, new TypeReference<List<Eintrag>>() {});
-            } else {
-                liste = new ArrayList<>();
+            // Service ausführen
+            if (serviceInstance != null) {
+                serviceInstance.execute();
             }
-
-            // Bei POST hinzufügen
-            if ("POST".equals(params.getRequestMethod())) {
-                liste.add(eintrag);
-                mapper.writerWithDefaultPrettyPrinter().writeValue(file, liste);
-            }
-
-            // HTML-Ausgabe aller Einträge
-            System.out.println("<html><head><title>Einträge</title></head><body>");
-            System.out.println("<h1>Alle Einträge</h1>");
-
-            for (Eintrag e : liste) {
-                System.out.println("<div style='margin-bottom:20px;'>");
-                System.out.println("<strong>Titel:</strong> " + e.getTitel() + "<br>");
-                System.out.println("<strong>Inhalt:</strong> " + e.getInhalt() + "<br>");
-                if (e.getData() != null) {
-                    System.out.println("<strong>Name:</strong> " + e.getData().getName() + "<br>");
-                    System.out.println("<strong>Email:</strong> " + e.getData().getEmail() + "<br>");
-                }
-                System.out.println("<hr></div>");
-            }
-            System.out.println("</body></html>");
 
         } catch (Exception e) {
+            System.err.println("CRITICAL ERROR in Main:");
             e.printStackTrace();
+            sendError500(e.getMessage());
+        }
+    }
+
+    /**
+     * Extrahiert Service-Namen aus PATH_INFO
+     * Beispiele:
+     * - "/login" -> "login"
+     * - "/account" -> "account"
+     * - "/product/123" -> "product"
+     * - null -> "test" (fallback)
+     */
+    private static String extractServiceFromPath(String pathInfo) {
+        if (pathInfo == null || pathInfo.isEmpty() || pathInfo.equals("/")) {
+            return "test"; // Fallback für Tests
         }
 
+        // Führendes "/" entfernen
+        if (pathInfo.startsWith("/")) {
+            pathInfo = pathInfo.substring(1);
+        }
+
+        // Ersten Teil extrahieren (vor dem nächsten "/")
+        int slashIndex = pathInfo.indexOf("/");
+        if (slashIndex > 0) {
+            return pathInfo.substring(0, slashIndex).toLowerCase();
+        }
+
+        return pathInfo.toLowerCase();
+    }
+
+    /**
+     * Sendet 404 Error
+     */
+    private static void sendError404(String service) {
+        System.out.println("Content-Type: application/json; charset=UTF-8");
+        System.out.println();
+        System.out.println("{");
+        System.out.println("  \"error\": \"Service nicht gefunden: " + service + "\",");
+        System.out.println("  \"timestamp\": " + System.currentTimeMillis());
+        System.out.println("}");
+        System.out.flush();
+    }
+
+    /**
+     * Sendet 500 Error
+     */
+    private static void sendError500(String message) {
+        System.out.println("Content-Type: application/json; charset=UTF-8");
+        System.out.println();
+        System.out.println("{");
+        System.out.println("  \"error\": \"Interner Server-Fehler: " + message + "\",");
+        System.out.println("  \"timestamp\": " + System.currentTimeMillis());
+        System.out.println("}");
         System.out.flush();
     }
 }
