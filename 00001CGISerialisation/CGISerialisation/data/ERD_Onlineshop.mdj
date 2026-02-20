@@ -224,13 +224,28 @@
 											"top": 397,
 											"width": 235.06494140625,
 											"height": 13
+										},
+										{
+											"_type": "ERDColumnView",
+											"_id": "AAAAAAGce0+5Dg8lXgA=",
+											"_parent": {
+												"$ref": "AAAAAAGaXpRO4O9Cp9c="
+											},
+											"model": {
+												"$ref": "AAAAAAGce0+5AQ8ixCA="
+											},
+											"font": "Arial;13;0",
+											"left": 525,
+											"top": 310,
+											"width": 235.06494140625,
+											"height": 13
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 520,
 									"top": 215,
 									"width": 245.06494140625,
-									"height": 98
+									"height": 113
 								}
 							],
 							"font": "Arial;13;0",
@@ -2381,6 +2396,16 @@
 							},
 							"name": "Column5",
 							"foreignKey": true
+						},
+						{
+							"_type": "ERDColumn",
+							"_id": "AAAAAAGce0+5AQ8ixCA=",
+							"_parent": {
+								"$ref": "AAAAAAGaXpRO4O8+hJs="
+							},
+							"name": "isActive",
+							"type": "BOOLEAN",
+							"length": 0
 						}
 					]
 				},

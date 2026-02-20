@@ -1,5 +1,7 @@
 package org.databases.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 public class Account {
@@ -9,8 +11,11 @@ public class Account {
     private String email;
     private String password;
     private String phoneNumber;
+    @JsonIgnore
     private List<Address> address;
+    @JsonIgnore
     private List<ShoppingCart> shoppingCart;
+    @JsonIgnore
     private List<Creditcard> creditCard;
     private boolean isActive;
 

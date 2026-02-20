@@ -14,56 +14,26 @@ public class Main {
         try {
             CgiParameter params = new CgiParameter();
             String path = params.getPathInfo();
-
-            // Service aus Path extrahieren
             String service = extractServiceFromPath(path);
 
-            // Service-Instanz erstellen
-            BaseService serviceInstance = null;
+            BaseService instance = null;
 
             switch(service) {
-                /*case "account":
+                case "account":
                 case "login":
                 case "register":
-                case "profile":
-                    serviceInstance = new AccountService(params);
+                    instance = new AccountService(params);
                     break;
-
-                case "product":
-                case "products":
-                    serviceInstance = new ProductService(params);
-                    break;
-
-                case "cart":
-                case "shopping-cart":
-                    serviceInstance = new ShoppingCartService(params);
-                    break;
-
-                case "review":
-                case "reviews":
-                    serviceInstance = new ReviewService(params);
-                    break;
-
-                case "order":
-                case "orders":
-                case "checkout":
-                    serviceInstance = new OrderService(params);
-                    break;
-
-
-                 */
                 case "test":
-                    serviceInstance = new TestService(params);
+                    instance = new TestService(params);
                     break;
-
                 default:
                     sendError404(service);
                     return;
             }
 
-            // Service ausführen
-            if (serviceInstance != null) {
-                serviceInstance.execute();
+            if (instance != null) {
+                instance.execute();
             }
 
         } catch (Exception e) {
@@ -71,6 +41,17 @@ public class Main {
             e.printStackTrace();
             sendError500(e.getMessage());
         }
+    }
+
+    //  Error-Methoden geben NUR JSON!
+    private static void sendError404(String service) {
+        System.out.println("{\"error\":\"Service nicht gefunden: " + service + "\",\"timestamp\":" + System.currentTimeMillis() + "}");
+        System.out.flush();
+    }
+
+    private static void sendError500(String message) {
+        System.out.println("{\"error\":\"Interner Server-Fehler\",\"timestamp\":" + System.currentTimeMillis() + "}");
+        System.out.flush();
     }
 
     /**
@@ -100,29 +81,4 @@ public class Main {
         return pathInfo.toLowerCase();
     }
 
-    /**
-     * Sendet 404 Error
-     */
-    private static void sendError404(String service) {
-        System.out.println("Content-Type: application/json; charset=UTF-8");
-        System.out.println();
-        System.out.println("{");
-        System.out.println("  \"error\": \"Service nicht gefunden: " + service + "\",");
-        System.out.println("  \"timestamp\": " + System.currentTimeMillis());
-        System.out.println("}");
-        System.out.flush();
-    }
-
-    /**
-     * Sendet 500 Error
-     */
-    private static void sendError500(String message) {
-        System.out.println("Content-Type: application/json; charset=UTF-8");
-        System.out.println();
-        System.out.println("{");
-        System.out.println("  \"error\": \"Interner Server-Fehler: " + message + "\",");
-        System.out.println("  \"timestamp\": " + System.currentTimeMillis());
-        System.out.println("}");
-        System.out.flush();
-    }
 }
