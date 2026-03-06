@@ -1,4 +1,4 @@
-package org.services.baseService;
+package org.services.baseServices;
 
 import org.cgi.CgiParameter;
 import java.util.HashMap;
@@ -46,7 +46,6 @@ public class TestService extends BaseService {
         response.put("success", true);
         response.put("message", "TestService funktioniert!");
         response.put("method", "GET");
-
         // CGI-Metadaten
         Map<String, String> cgiData = new HashMap<>();
         cgiData.put("pathInfo", params.getPathInfo());

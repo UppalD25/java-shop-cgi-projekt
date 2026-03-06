@@ -16,23 +16,6 @@ public class AddKey {
         addConstraintCartProductProduct();
     }
 
-    private static boolean constraintExists(Connection conn, String tableName, String constraintName) throws SQLException {
-        try {
-            DatabaseMetaData meta = conn.getMetaData();
-            try (ResultSet rs = meta.getImportedKeys(null, null, tableName)) {
-                while (rs.next()) {
-                    String fkName = rs.getString("FK_NAME");
-                    if (constraintName.equalsIgnoreCase(fkName)) {
-                        return true;
-                    }
-                }
-                return false;
-            }
-        } catch (SQLException e) {
-            return false;
-        }
-    }
-
     private static void addConstraintAddressAccount() {
         try (Connection conn = Connector.getConnectionToAccess();
              Statement stmt = conn.createStatement()) {
@@ -212,4 +195,26 @@ public class AddKey {
             e.printStackTrace();
         }
     }
+
+
+
+
+
+    private static boolean constraintExists(Connection conn, String tableName, String constraintName) throws SQLException {
+        try {
+            DatabaseMetaData meta = conn.getMetaData();
+            try (ResultSet rs = meta.getImportedKeys(null, null, tableName)) {
+                while (rs.next()) {
+                    String fkName = rs.getString("FK_NAME");
+                    if (constraintName.equalsIgnoreCase(fkName)) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        } catch (SQLException e) {
+            return false;
+        }
+    }
+
 }

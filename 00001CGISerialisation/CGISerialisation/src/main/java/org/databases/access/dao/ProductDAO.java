@@ -131,43 +131,6 @@ public class ProductDAO implements IProduct {
         }
         return products;
     }
-
-    /**
-     * Sucht Produkte in einer bestimmten Preisspanne
-     * VERWENDET: BETWEEN-Operator (inklusiv beide Grenzen)
-     *
-     * @param minPrice Minimaler Preis (wird eingeschlossen)
-     * @param maxPrice Maximaler Preis (wird eingeschlossen)
-     * @return Liste der Produkte in dieser Preisspanne
-     */
-    public List<Product> getProductsByPriceRange(double minPrice, double maxPrice) {
-        // BETWEEN = inklusiv beide Grenzen (>= minPrice AND <= maxPrice)
-        String sql = "SELECT * FROM Product WHERE Price BETWEEN ? AND ?";
-        List<Product> products = new ArrayList<>();
-
-        try (Connection conn = Connector.getConnectionToAccess();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-            stmt.setDouble(1, minPrice);
-            stmt.setDouble(2, maxPrice);
-            ResultSet rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                Product product = new Product();
-                product.setProduct_id(rs.getInt("Product_ID"));
-                product.setName(rs.getString("Name"));
-                product.setDescriptionText(rs.getString("Comment"));
-                product.setPrice(rs.getDouble("Price"));
-                products.add(product);
-            }
-
-        } catch (SQLException e) {
-            System.err.println("Fehler beim Suchen von Produkten in Preisspanne: " + minPrice + " - " + maxPrice);
-            e.printStackTrace();
-        }
-        return products;
-    }
-
     /**
      * Aktualisiert ein bestehendes Produkt
      * @param product Das Product-Objekt mit neuen Daten (muss ID haben)

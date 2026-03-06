@@ -6,17 +6,18 @@ import java.util.List;
 public interface IReview {
     // CREATE
     void createReview(Review review);
-
-    // READ
-    Review getReviewById(int reviewId);
-    List<Review> getAllReviews();
-    List<Review> getReviewsByProductId(int productId);
-    List<Review> getReviewsByAccountId(int accountId);
-
     // UPDATE
     void updateReview(Review review);
-
     // DELETE
     void deleteReview(int reviewId);
-    void deleteReviewsByProductId(int productId);
+
+    List<Review> getReviewsByProductId(int productId);
+
+    Review getReviewById(int reviewId);
+
+    List<Review> getAllReviews();
+
+    List<Review> getReviewsByAccountId(int accountId);
+
+
 }

@@ -11,7 +11,7 @@ public interface IAccount {
         // CREATE
         void createAccount(Account account);
 
-        // READ
+
         Account getAccountById(int accountId);
         Account getAccountByEmail(String email);
         List<Account> getAllAccounts();
@@ -21,21 +21,21 @@ public interface IAccount {
         void updatePassword(int accountId, String newPassword);
         void updateEmail(int accountId, String newEmail);
 
-        // soft DELETE
+        // soft delete
         /**
          * Führt ein "soft delete" für einen Account durch, indem der isActive-Status auf false gesetzt wird.
          * @param accountId Die ID des zu deaktivierenden Accounts
          */
         void deleteAccount(int accountId);
 
-        // AUTHENTICATION
+        // doppel checken
         Account login(String email, String password);
         boolean emailExists(String email);
 
       /*
-        // RELATIONSHIPS (optional)
-       */
-        List<Address> getAddressesByAccountId(int accountId);
+        später vielleicht
         List<Creditcard> getCreditcardsByAccountId(int accountId);
         List<ShoppingCart> getShoppingCartsByAccountId(int accountId);
+    */
 }
+

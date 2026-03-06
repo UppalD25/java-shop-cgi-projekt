@@ -10,12 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ReviewJSONDAO implements IReview {
+public class ReviewJSONDAO implements IReview{
 
     private static final String FILE_PATH = "data/reviews.json";
     private ObjectMapper mapper = new ObjectMapper();
 
-    @Override
     public void createReview(Review review){
         try{
             List<Review> reviews = loadAll();
@@ -35,7 +34,7 @@ public class ReviewJSONDAO implements IReview {
         }
     }
 
-    @Override
+
     public Review getReviewById(int reviewId){
         try {
             return loadAll().stream()
@@ -48,7 +47,7 @@ public class ReviewJSONDAO implements IReview {
         }
     }
 
-    @Override
+
     public List<Review> getAllReviews(){
         try {
             return loadAll();
@@ -58,7 +57,7 @@ public class ReviewJSONDAO implements IReview {
         }
     }
 
-    @Override
+
     public List<Review> getReviewsByProductId(int productId){
         try {
             return loadAll().stream()
@@ -70,7 +69,7 @@ public class ReviewJSONDAO implements IReview {
         }
     }
 
-    @Override
+
     public List<Review> getReviewsByAccountId(int accountId){
         try {
             return loadAll().stream()
@@ -82,7 +81,6 @@ public class ReviewJSONDAO implements IReview {
         }
     }
 
-    @Override
     public void updateReview(Review review){
         try {
             List<Review> reviews = loadAll();
@@ -98,7 +96,6 @@ public class ReviewJSONDAO implements IReview {
         }
     }
 
-    @Override
     public void deleteReview(int reviewId){
         try {
             List<Review> reviews = loadAll();
@@ -109,7 +106,7 @@ public class ReviewJSONDAO implements IReview {
         }
     }
 
-    @Override
+
     public void deleteReviewsByProductId(int productId){
         try {
             List<Review> reviews = loadAll();
@@ -129,7 +126,7 @@ public class ReviewJSONDAO implements IReview {
             return new ArrayList<>();
         }
 
-        // ✅ Review statt Account!
+        //  Review statt Account!
         return mapper.readValue(file, new TypeReference<List<Review>>() {});
     }
 

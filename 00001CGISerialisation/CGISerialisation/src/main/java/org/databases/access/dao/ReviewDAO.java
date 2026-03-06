@@ -203,23 +203,5 @@ public class ReviewDAO implements IReview {
             e.printStackTrace();
         }
     }
-    /**
-     * Löscht ALLE Reviews eines Produkts
-     * Nützlich wenn ein Produkt gelöscht wird
-     * @param productId Die ID des Produkts
-     */
-    public void deleteReviewsByProductId(int productId) {
-        String sql = "DELETE FROM Review WHERE Product_Product_ID = ?";
 
-        try (Connection conn = Connector.getConnectionToAccess();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-            stmt.setInt(1, productId);
-            stmt.executeUpdate();
-
-        } catch (SQLException e) {
-            System.err.println("Fehler beim Löschen der Reviews für Produkt ID: " + productId);
-            e.printStackTrace();
-        }
-    }
 }

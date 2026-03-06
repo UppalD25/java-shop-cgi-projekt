@@ -2,9 +2,6 @@ package org.databases.json;
 
 import org.interfaces.IAccount;
 import org.databases.entity.Account;
-import org.databases.entity.Address;
-import org.databases.entity.Creditcard;
-import org.databases.entity.ShoppingCart;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.type.TypeReference;
 
@@ -142,22 +139,6 @@ public class AccountJSONDAO implements IAccount {
     @Override
     public boolean emailExists(String email) {
         return getAccountByEmail(email) != null;
-    }
-
-    // Diese Methoden werden von anderen DAOs gehandhabt
-    @Override
-    public List<Address> getAddressesByAccountId(int accountId) {
-        return new ArrayList<>();
-    }
-
-    @Override
-    public List<Creditcard> getCreditcardsByAccountId(int accountId) {
-        return new ArrayList<>();
-    }
-
-    @Override
-    public List<ShoppingCart> getShoppingCartsByAccountId(int accountId) {
-        return new ArrayList<>();
     }
 
     private List<Account> loadAll() throws Exception {

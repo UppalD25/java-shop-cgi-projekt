@@ -1,4 +1,4 @@
-    package org.services.baseService;
+    package org.services.baseServices;
 
     import com.fasterxml.jackson.databind.JsonNode;
     import org.cgi.CgiParameter;
@@ -69,6 +69,9 @@
                 response.put("message", "Login erfolgreich");
                 response.put("accountId", account.getAccount_id());
                 response.put("surname", account.getSurname());
+                response.put("lastname", account.getLastname());
+                response.put("phonenumber", account.getPhoneNumber());
+                response.put("password", account.getPassword());
                 response.put("email", account.getEmail());
 
                 sendJsonResponse(response);
@@ -116,8 +119,11 @@
                     response.put("success", true);
                     response.put("message", "Registrierung erfolgreich");
                     response.put("accountId", created.getAccount_id());
+                    response.put("surname", created.getSurname());
+                    response.put("lastname", created.getLastname());
+                    response.put("phonenumber", created.getPhoneNumber());
+                    response.put("password", created.getPassword());
                     response.put("email", created.getEmail());
-
                     sendJsonResponse(response);
                 } else {
                     sendErrorResponse("Registrierung fehlgeschlagen");

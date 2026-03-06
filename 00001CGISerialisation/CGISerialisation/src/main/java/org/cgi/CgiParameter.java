@@ -56,7 +56,7 @@ public class CgiParameter {
         pathInfo      = getEnvironment("PATH_INFO");
     }
 
-    // 🔥 Fallback-Leselogik für JSON / chunked Body
+    //  Fallback-Leselogik für JSON / chunked Body
     public String getContentFromBodyAsString() {
         if (bodyString != null) return bodyString;
 

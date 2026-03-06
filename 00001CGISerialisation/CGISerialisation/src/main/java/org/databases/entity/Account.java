@@ -17,7 +17,7 @@ public class Account {
     private List<ShoppingCart> shoppingCart;
     @JsonIgnore
     private List<Creditcard> creditCard;
-    private boolean isActive;
+    private boolean isActive = true;
 
     public boolean isActive() {
         return isActive;

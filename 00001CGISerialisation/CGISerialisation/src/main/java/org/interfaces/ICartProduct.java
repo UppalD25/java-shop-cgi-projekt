@@ -7,10 +7,7 @@ public interface ICartProduct {
     // CREATE
     void addProductToCart(CartProduct cartProduct);
 
-    // READ
     CartProduct getCartProductById(int cartProductId);
-    List<CartProduct> getCartProductsByShoppingCartId(int shoppingCartId);
-    CartProduct getCartProductByShoppingCartAndProduct(int shoppingCartId, int productId);
 
     // UPDATE
     void updateCartProduct(CartProduct cartProduct);
@@ -20,7 +17,15 @@ public interface ICartProduct {
     void removeProductFromCart(int cartProductId);
     void clearCart(int shoppingCartId);
 
-    // BUSINESS LOGIC
+    /*
+    später halt
+
     int getTotalItemsInCart(int shoppingCartId);
     double getCartSubtotal(int shoppingCartId);
+    // READ
+    List<CartProduct> getCartProductsByShoppingCartId(int shoppingCartId);
+    CartProduct getCartProductByShoppingCartAndProduct(int shoppingCartId, int productId);
+
+
+     */
 }

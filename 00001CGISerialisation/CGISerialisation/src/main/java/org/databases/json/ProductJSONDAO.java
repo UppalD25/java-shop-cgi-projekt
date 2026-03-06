@@ -21,7 +21,7 @@ public class ProductJSONDAO implements IProduct {
         try {
             List<Product> products = loadAll();
 
-            // Auto-increment ID
+            // Auto-increment der ID so wie bei mysql ..
             int newId = products.isEmpty() ? 1 :
                     products.stream()
                             .mapToInt(Product::getProduct_id)
@@ -62,21 +62,6 @@ public class ProductJSONDAO implements IProduct {
                         p.getName().toLowerCase().contains(name.toLowerCase()))
                 .collect(Collectors.toList());
     }
-    public List<Product> getProductsByPriceRange(double minPrice, double maxPrice){
-        try {
-            if (minPrice > maxPrice) {
-                return new ArrayList<>();
-            }
-            return loadAll().stream()
-                    .filter(p -> p.getPrice() >= minPrice && p.getPrice() <= maxPrice)
-                    .collect(Collectors.toList());
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
 
     // UPDATE
     public void updateProduct(Product product){
@@ -89,6 +74,7 @@ public class ProductJSONDAO implements IProduct {
                     break;
                 }
             }
+            saveAll(products);
 
 
         }catch (Exception e){

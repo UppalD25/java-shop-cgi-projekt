@@ -98,36 +98,6 @@ public class CreditcardDAO implements ICreditcard {
         return creditcards;
     }
 
-    /**
-     * Lädt alle Kreditkarten eines bestimmten Accounts
-     * @param accountId Die ID des Accounts
-     * @return Liste der Kreditkarten dieses Accounts (leer wenn keine vorhanden)
-     */
-    public List<Creditcard> getCreditcardsByAccountId(int accountId) {
-        String sql = "SELECT * FROM Creditcard WHERE Account_Account_ID = ?";
-        List<Creditcard> creditcards = new ArrayList<>();
-
-        try (Connection conn = Connector.getConnectionToMySQL();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-            stmt.setInt(1, accountId);
-            ResultSet rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                Creditcard card = new Creditcard();
-                card.setCreditcard_id(rs.getInt("Creditcard_ID"));
-                card.setIban(rs.getString("iban"));
-                card.setValidUntil(rs.getDate("validUntil").toLocalDate());
-                card.setCardnumber(rs.getString("Cardnumber"));
-                creditcards.add(card);
-            }
-
-        } catch (SQLException e) {
-            System.err.println("Fehler beim Laden der Kreditkarten für Account ID: " + accountId);
-            e.printStackTrace();
-        }
-        return creditcards;
-    }
 
     /**
      * Aktualisiert eine bestehende Kreditkarte

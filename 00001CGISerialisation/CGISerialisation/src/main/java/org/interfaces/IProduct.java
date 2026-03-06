@@ -6,17 +6,17 @@ import java.util.List;
 public interface IProduct {
     // CREATE
     void createProduct(Product product);
-
-    // READ
-    Product getProductById(int productId);
-    List<Product> getAllProducts();
-    List<Product> searchProductsByName(String name);
-    List<Product> getProductsByPriceRange(double minPrice, double maxPrice);
-
     // UPDATE
     void updateProduct(Product product);
     void updateProductPrice(int productId, double newPrice);
-
     // DELETE
     void deleteProduct(int productId);
+    List<Product> searchProductsByName(String name);
+    List<Product> getAllProducts();
+    Product getProductById(int productId);
+
+    /* später vielleicht
+
+    List<Product> getProductsByPriceRange(double minPrice, double maxPrice);
+     */
 }
