@@ -38,7 +38,7 @@ public class Main {
         } catch (Exception e) {
             System.err.println("CRITICAL ERROR in Main:");
             e.printStackTrace();
-            sendError500(e.getMessage()); //Server Fehler der auf der Website angezegit wird
+            sendError500(e.getMessage()); //Server Fehler der auf der Website angezegit wird kann aber in gewissen fällen null sein
         }
     }
     /**
@@ -69,16 +69,31 @@ public class Main {
     }
 
 
-
-
-    //  Error-Methoden geben NUR JSON!
+    /**
+     * Sends a 404 Not Found error response in JSON format to the standard output.
+     * This method is used to notify the client that the requested service could not be found.
+     *
+     * @param service the name of the requested service that could not be found
+     */
     private static void sendError404(String service) {
+        System.out.println("Content-Type: application/json; charset=UTF-8");
         System.out.println("{\"error\":\"Service nicht gefunden: " + service + "\",\"timestamp\":" + System.currentTimeMillis() + "}");
         System.out.flush();
     }
 
+    /**
+     * Sends a 500 Internal Server Error response in JSON format to the standard output.
+     * This method is typically invoked in critical error scenarios to notify the client
+     * that an unexpected server error has occurred.
+     *
+     * This may even be an public method if the program crashes internally that you know why
+     * or at least what even happened.
+     *
+     * @param message the error message describing the cause of the server error
+     */
     private static void sendError500(String message) {
-        System.out.println("{\"error\":\"Interner Server-Fehler\",\"timestamp\":" + System.currentTimeMillis() + "}");
+        System.out.println("Content-Type: application/json; charset=UTF-8");
+        System.out.println("{\"error\":\"Interner Server-Fehler\",\"timestamp\":" + System.currentTimeMillis() + "} Message:" +message);
         System.out.flush();
     }
 
