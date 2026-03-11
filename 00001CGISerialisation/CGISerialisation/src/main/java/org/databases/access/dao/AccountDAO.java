@@ -4,6 +4,7 @@ import org.databases.entity.Account;
 import org.databases.entity.Address;
 import org.databases.entity.Creditcard;
 import org.databases.entity.ShoppingCart;
+import org.databases.utils.DatabaseQueryHelper;
 import org.interfaces.IAccount;
 import org.databases.access.setup.Connector;
 
@@ -14,24 +15,21 @@ import java.util.List;
 public class AccountDAO implements IAccount {
 
     // CREATE
-    public void createAccount(Account account) {
+    public boolean createAccount(Account account) {
         String sql = "INSERT INTO Account (Surname, Lastname, Email, Password, PhoneNumber, isActive) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = Connector.getConnectionToAccess();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setString(1, account.getSurname());
-            stmt.setString(2, account.getLastname());
-            stmt.setString(3, account.getEmail());
-            stmt.setString(4, account.getPassword());
-            stmt.setString(5, account.getPhoneNumber());
-            stmt.setBoolean(6, account.isActive());
-            stmt.executeUpdate();
+            DatabaseQueryHelper.createAccountPreparingStatment(account, stmt);
+
+            return true;
 
         } catch (SQLException e) {
             System.err.println("Fehler beim Erstellen des Accounts");
             e.printStackTrace();
         }
+        return false;
     }
 
     // READ
@@ -125,12 +123,7 @@ public class AccountDAO implements IAccount {
         try (Connection conn = Connector.getConnectionToAccess();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setString(1, account.getSurname());
-            stmt.setString(2, account.getLastname());
-            stmt.setString(3, account.getEmail());
-            stmt.setString(4, account.getPassword());
-            stmt.setString(5, account.getPhoneNumber());
-            stmt.setBoolean(6, account.isActive());
+            DatabaseQueryHelper.updateAccountPreparingStatment(account, stmt);
             stmt.setInt(7, account.getAccount_id());
             stmt.executeUpdate();
 
