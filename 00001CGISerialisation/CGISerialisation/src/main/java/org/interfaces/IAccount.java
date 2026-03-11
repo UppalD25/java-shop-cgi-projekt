@@ -8,8 +8,13 @@ import org.databases.entity.ShoppingCart;
 import java.util.List;
 
 public interface IAccount {
-        // CREATE
-        void createAccount(Account account);
+        /**
+         * Creates a new account with the details provided in the given Account object.
+         *
+         * @param account The Account object containing the information for the new account.
+         * @return true if the account was successfully created, false otherwise.
+         */
+        boolean createAccount(Account account);
 
 
         Account getAccountById(int accountId);

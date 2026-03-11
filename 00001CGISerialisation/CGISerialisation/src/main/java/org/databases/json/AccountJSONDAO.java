@@ -16,7 +16,7 @@ public class AccountJSONDAO implements IAccount {
     private ObjectMapper mapper = new ObjectMapper();
 
     @Override
-    public void createAccount(Account account) {
+    public boolean createAccount(Account account) {
         try {
             List<Account> accounts = loadAll();
 
@@ -30,9 +30,11 @@ public class AccountJSONDAO implements IAccount {
             accounts.add(account);
 
             saveAll(accounts);
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return false;
     }
 
     @Override
