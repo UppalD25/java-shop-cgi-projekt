@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Register</title>
+    <script src="account.js?v=5" defer></script>
+</head>
+<body>
+<div class="container">
+    <div id="formContainer">
+        <h1>Login / Register</h1>
+
+        <!-- LOGIN FORM -->
+        <div id="loginSection" class="form-section active">
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email:</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="loginPassword">Password:</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+
+                <button type="submit">Login</button>
+            </form>
+        </div>
+
+        <!-- REGISTER FORM -->
+        <div id="registerSection" class="form-section">
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="registerSurname">Vorname:</label>
+                    <input type="text" id="registerSurname" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="registerLastname">Nachname:</label>
+                    <input type="text" id="registerLastname">
+                </div>
+
+                <div class="form-group">
+                    <label for="registerEmail">Email:</label>
+                    <input type="email" id="registerEmail" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="registerPassword">Password:</label>
+                    <input type="password" id="registerPassword" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="registerPhone">Telefon (optional):</label>
+                    <input type="tel" id="registerPhone">
+                </div>
+
+                <button type="submit">Registrieren</button>
+            </form>
+        </div>
+
+        <div id="message" class="message"></div>
+    </div>
+
+
+    <!-- SUCCESS PAGE -->
+    <div id="successPage" style="display: none;">
+        <h1>Es funktioniert!</h1>
+        <div>
+            <h3>Deine Daten:</h3>
+            <p><strong>Account ID:</strong> <span id="displayAccountId"></span></p>
+            <p><strong>Vorname:</strong> <span id="displaySurname"></span></p>
+            <p><strong>Nachname:</strong> <span id="displayLastname"></span></p>
+            <p><strong>Telefon:</strong> <span id="displayPhone"></span></p>
+            <p><strong>Passwort:</strong> <span id="displayPassword"></span></p>
+            <p><strong>Email:</strong> <span id="displayEmail"></span></p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
