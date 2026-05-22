@@ -8,7 +8,7 @@
     import java.util.HashMap;
     import java.util.Map;
 
-    public class AccountService extends BaseService {
+    public class    AccountService extends BaseService {
 
         private AccountJSONDAO accountDAO;
 
@@ -85,7 +85,7 @@
 
         private void handleRegister() {
             try {
-                JsonNode data = mapper.readTree(params.getContentFromBodyAsString());
+               JsonNode data = mapper.readTree(params.getContentFromBodyAsString());
 
                 String surname = data.get("surname").asText();
                 String lastname = data.has("lastname") ? data.get("lastname").asText() : "";

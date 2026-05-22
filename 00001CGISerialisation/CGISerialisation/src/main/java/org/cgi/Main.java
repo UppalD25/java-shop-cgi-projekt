@@ -81,5 +81,4 @@ public class Main {
         System.out.println("{\"error\":\"Interner Server-Fehler\",\"timestamp\":" + System.currentTimeMillis() + "}");
         System.out.flush();
     }
-
 }
